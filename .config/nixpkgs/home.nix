@@ -19,16 +19,24 @@
 
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
+    # Fonts
     (nerdfonts.override { fonts = [ "FiraCode" "CascadiaCode" ]; })
-    tdesktop
-    topgrade
-    htop
-    tealdeer
+    # Basics
     bat
-    htop
-    helix
-    starship
+    exa
     gh
+    htop
+    starship
+    tealdeer
+    tmux
+    topgrade
+    zsh
+    # Daily programs
+    tdesktop
+    # Dev tools
+    vscode
+    helix
+    google-cloud-sdk
   ];
 
   # This value determines the Home Manager release that your
@@ -53,10 +61,16 @@
     zsh = {
       enable = true;
       enableAutosuggestions = true;
+      shellAliases = {
+        rm = "rm -i";
+        cp = "cp -i";
+        mv = "mv -i";
+      };
       zplug = {
         enable = true;
         plugins = [
           { name = "zsh-users/zsh-syntax-highlighting"; }
+          { name = "DarrinTisdale/zsh-aliases-exa"; }
         ];
       };
     };

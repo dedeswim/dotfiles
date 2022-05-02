@@ -3,7 +3,6 @@
 {
   home.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" "CascadiaCode" ]; })
-    # nixgl.auto.nixGLDefault
     tdesktop
     vscode
   ];

@@ -11,11 +11,17 @@
     nixgl.url = "github:guibou/nixGL";
   };
 
-  outputs = { self, ... }@inputs:
+  outputs = { self, nixgl, nixpkgs, home-manager }:
+
+  let
+    pkgs = import nixpkgs {
+      overlays = [ nixgl.overlay ];
+    };
+  in
   
   {
     homeConfigurations = {
-      xps = inputs.home-manager.lib.homeManagerConfiguration {
+      xps = home-manager.lib.homeManagerConfiguration {
         # Specify the path to your home configuration here
         configuration = { pkgs, config, ... }:
         {
@@ -31,11 +37,6 @@
         system = "x86_64-linux";
         username = "edoardo";
         homeDirectory = "/home/edoardo";
-        # sessionVariables = {
-        #   EDITOR = "hx";
-        #   BROWSER = "firefox";
-        #   TERMINAL = "gnome-terminal";
-        # };
         stateVersion = "22.05";
       };
     };

@@ -2,7 +2,6 @@
 
 let
   nixgl = import <nixgl> {};
-  unstable = import <unstable> {};
 in
 
 {
@@ -11,7 +10,7 @@ in
   home.username = "edoardo";
   home.homeDirectory = "/home/edoardo";
   home.sessionVariables = {
-    EDITOR="hx";
+    EDITOR = "hx";
     BROWSER = "firefox";
     TERMINAL = "gnome-terminal";
   };
@@ -30,7 +29,7 @@ in
     alacritty
     bat
     exa
-    unstable.fd
+    fd
     gh
     htop
     nixgl.auto.nixGLDefault
@@ -39,7 +38,6 @@ in
     tealdeer
     tmux
     topgrade
-    unstable.wezterm
     zsh
     # Daily programs
     tdesktop

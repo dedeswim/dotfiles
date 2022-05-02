@@ -11,7 +11,7 @@ in
   home.username = "edoardo";
   home.homeDirectory = "/home/edoardo";
   home.sessionVariables = {
-    EDITOR="code";
+    EDITOR="hx";
     BROWSER = "firefox";
     TERMINAL = "gnome-terminal";
   };
@@ -73,6 +73,9 @@ in
       enable = true;
       userName  = "Edoardo Debenedetti";
       userEmail = "edoardo.m.debenedetti@gmail.com";
+      extraConfig = {
+        pull.rebase = false;
+      };
     };
     zsh = {
       enable = true;

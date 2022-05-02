@@ -4,9 +4,16 @@
 bash <(curl -L https://nixos.org/nix/install)
 nix-channel --update
 
+# Add useful channels
+nix-channel --add https://nixos.org/channels/nixos-unstable unstable
+nix-channel --add https://github.com/guibou/nixGL/archive/main.tar.gz nixgl && nix-channel --update
+
+
 # Install home-manager
 nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
 nix-channel --update
 nix-shell '<home-manager>' -A install
 
 home-manager switch
+
+echo "export XDG_DATA_DIRS=\"$HOME/.nix-profile/share:$XDG_DATA_DIRS\"" >> .profile

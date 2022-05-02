@@ -1,5 +1,10 @@
 { config, pkgs, ... }:
 
+let
+  nixgl = import <nixgl> {};
+  unstable = import <unstable> {};
+in
+
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -21,22 +26,27 @@
   home.packages = with pkgs; [
     # Fonts
     (nerdfonts.override { fonts = [ "FiraCode" "CascadiaCode" ]; })
-    # Basics
+    # OS Basics
+    alacritty
     bat
     exa
+    unstable.fd
     gh
     htop
+    nixgl.auto.nixGLDefault
+    ripgrep
     starship
     tealdeer
     tmux
     topgrade
+    unstable.wezterm
     zsh
     # Daily programs
     tdesktop
     # Dev tools
     vscode
-    helix
     google-cloud-sdk
+    helix
   ];
 
   # This value determines the Home Manager release that your
@@ -53,6 +63,12 @@
   programs.home-manager.enable = true;
   
   programs = {
+    bat = {
+      enable = true;
+      config = {
+        theme = "TwoDark";
+      };
+    };
     git = {
       enable = true;
       userName  = "Edoardo Debenedetti";
@@ -65,6 +81,7 @@
         rm = "rm -i";
         cp = "cp -i";
         mv = "mv -i";
+        python = "ptython3";
       };
       zplug = {
         enable = true;
@@ -90,6 +107,7 @@
         "workbench.colorTheme" = "One Dark Pro";
         "window.titleBarStyle" = "custom";
         "editor.fontLigatures" = true;
+        "files.autoSave" = "onFocusChange";
       };
     };
     helix = {
@@ -112,6 +130,18 @@
       settings = {
         font = {
           size = 15;
+          normal = {
+            family = "CaskaydiaCove Nerd Font";
+            style = "Light";
+          };
+          bold = {
+            family = "CaskaydiaCove Nerd Font";
+            style = "Medium";
+          };
+          italic = {
+            family = "CaskaydiaCove Nerd Font";
+            style = "Light Italic";
+          };
         };
         # Colors (One Dark)
         colors = {

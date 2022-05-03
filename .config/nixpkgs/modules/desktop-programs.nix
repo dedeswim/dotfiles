@@ -1,11 +1,23 @@
 { config, pkgs, libs, ... }:
 
+let
+  nixgl = import <nixgl> {};
+in
+
 {
   home.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" "CascadiaCode" ]; })
     tdesktop
     vscode
+    nixgl.auto.nixGLDefault
   ];
+
+  xdg = {
+    enable = true;
+    mime.enable = true;
+  };
+
+  fonts.fontconfig.enable = true;
 
   programs.vscode = {
     enable = true;

@@ -55,17 +55,31 @@
     };
   };
 
+  programs.topgrade = {
+    enable = true;
+    settings = {
+      disable = [
+        "gcloud"
+        "home_manager"
+      ];
+      commands = {
+        "Home Manager" = "home-manager switch --flake .config/nixpkgs#edoardo@pop-os --impure";
+      };
+    };
+  };
+
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;
     initExtraFirst = ''
+      autoload -U compinit; compinit
       eval "$(starship init zsh)"
     '';
     shellAliases = {
       rm = "rm -i";
       cp = "cp -i";
       mv = "mv -i";
-      python = "ptython3";
+      python = "python3";
     };
     zplug = {
       enable = true;

@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 let nixGLIntel = (pkgs.callPackage "${builtins.fetchTarball {
       url = https://github.com/guibou/nixGL/archive/56f2fbcce7a08c60c98394a64e900d5e9227bcb2.tar.gz;
-      # sha256 = "0yh8zq746djazjvlspgyy1hvppaynbqrdqpgk447iygkpkp3f5qr";
+      sha256 = "093lf41pp22ndkibm1fqvi78vfzw255i3313l72dwkk86q9wsbzr";
     }}/nixGL.nix"
   { }).nixGLIntel;
 in

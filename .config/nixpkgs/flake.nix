@@ -21,7 +21,7 @@
   
   {
     homeConfigurations = {
-      xps = home-manager.lib.homeManagerConfiguration {
+      "edoardo@pop-os" = home-manager.lib.homeManagerConfiguration {
         # Specify the path to your home configuration here
         configuration = { pkgs, config, ... }:
         {

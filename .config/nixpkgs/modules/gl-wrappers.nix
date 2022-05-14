@@ -15,7 +15,7 @@ in
       '';
     settings = {
       font = {
-        size = 15;
+        size = 14;
         normal = {
           family = "CaskaydiaCove Nerd Font";
           style = "Light";

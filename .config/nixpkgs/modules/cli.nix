@@ -8,6 +8,7 @@
     exa
     fd
     git
+    gh
     google-cloud-sdk
     helix
     nix-zsh-completions
@@ -15,6 +16,7 @@
     ripgrep
     starship
     tealdeer
+    thefuck
     tmux
     topgrade
     tree
@@ -35,6 +37,7 @@
       userEmail = "edoardo.m.debenedetti@gmail.com";
       extraConfig = {
         pull.rebase = false;
+        init.defaultBranch = "main";
       };
   };
 
@@ -71,10 +74,8 @@
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;
-    initExtraFirst = ''
-      autoload -U compinit; compinit
-      eval "$(starship init zsh)"
-    '';
+    enableCompletion = true;
+    enableSyntaxHighlighting = true;
     shellAliases = {
       rm = "rm -i";
       cp = "cp -i";
@@ -84,9 +85,11 @@
     zplug = {
       enable = true;
       plugins = [
-        { name = "zsh-users/zsh-syntax-highlighting"; }
         { name = "DarrinTisdale/zsh-aliases-exa"; }
       ];
     };
+    envExtra = ''
+    eval $(thefuck --alias belin)
+    '';
   };
 }

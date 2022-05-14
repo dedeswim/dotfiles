@@ -7,7 +7,9 @@ in
 {
   home.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" "CascadiaCode" ]; })
-    tdesktop
+    google-chrome
+    flameshot
+    # tdesktop
     vscode
     nixgl.auto.nixGLDefault
   ];
@@ -27,15 +29,21 @@ in
       zhuangtongfa.material-theme
       ms-vscode-remote.remote-ssh
       jnoortheen.nix-ide
+      eamodio.gitlens
+      github.copilot
     ];
     userSettings = {
       "editor.fontSize" = 18;
       "editor.fontFamily" = "'CaskaydiaCove Nerd Font', 'monospace', monospace";
       "workbench.preferredDarkColorTheme" = "One Dark Pro";
       "workbench.colorTheme" = "One Dark Pro";
+      "workbench.iconTheme" = "material-icon-theme";
       "window.titleBarStyle" = "custom";
       "editor.fontLigatures" = true;
       "files.autoSave" = "onFocusChange";
+      "editor.inlineSuggest.enabled" = true;
+      "git.autofetch" = true;
+      "git.confirmSync" = false;
     };
   };
 }

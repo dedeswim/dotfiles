@@ -33,6 +33,7 @@
             ./modules/gl-wrappers.nix
             ./modules/home-manager.nix
           ];
+          programs.zsh.initExtra = builtins.readFile ./configs/zsh/linux-desktop.zsh;
         };
         system = "x86_64-linux";
         username = "edoardo";

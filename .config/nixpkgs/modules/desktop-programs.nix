@@ -23,7 +23,7 @@ in
 
   programs.vscode = {
     enable = true;
-    # package = pkgs.vscodium;    # You can skip this if you want to use the unfree version
+    package = pkgs.vscode;
     extensions = with pkgs.vscode-extensions; [
       pkief.material-icon-theme
       zhuangtongfa.material-theme

@@ -14,34 +14,18 @@
   outputs = { self, nixgl, nixpkgs, home-manager }:
 
   let
-    pkgs = import nixpkgs {
-      overlays = [ nixgl.overlay ];
-    };
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
   in
   
   {
     homeConfigurations = {
       "edoardo@pop-os" = home-manager.lib.homeManagerConfiguration {
-        # Specify the path to your home configuration here
-        configuration = { pkgs, config, ... }:
-        {
-          xdg.configFile."nix/nix.conf".source = ./configs/nix.conf;
-          nixpkgs.config = import ./config.nix;
-          imports = [
-            ./modules/cli.nix
-            ./modules/desktop-programs.nix
-            ./modules/gl-wrappers.nix
-            ./modules/home-manager.nix
-          ];
-          programs.zsh.initExtra = builtins.readFile ./configs/zsh/linux-desktop.zsh;
-        };
-        system = "x86_64-linux";
-        username = "edoardo";
-        homeDirectory = "/home/edoardo";
-        stateVersion = "22.05";
+        inherit pkgs;
+        modules = [
+          ./home/pop-os.nix
+        ];
       };
     };
-
-    xps = self.homeConfigurations.xps.activationPackage;
   };
 }

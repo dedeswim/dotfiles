@@ -66,7 +66,7 @@
         "home_manager"
       ];
       commands = {
-        "Home Manager" = "home-manager switch --flake ~/.config/nixpkgs#edoardo@pop-os --impure";
+        "Home Manager" = "nix flake update ~/.config/nixpkgs/ && home-manager switch --flake ~/.config/nixpkgs#edoardo@pop-os --impure";
       };
     };
   };
